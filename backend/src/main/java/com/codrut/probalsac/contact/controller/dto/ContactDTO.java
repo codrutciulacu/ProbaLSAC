@@ -6,9 +6,9 @@ import lombok.RequiredArgsConstructor;
 @Data
 @RequiredArgsConstructor
 public class ContactDTO {
-    private final Long id;
-    private final String name;
-    private final String email;
-    private final String message;
-    private final boolean isResolved;
+    public final Long id;
+    public final String name;
+    public final String email;
+    public final String message;
+    public final boolean is_resolved;
 }

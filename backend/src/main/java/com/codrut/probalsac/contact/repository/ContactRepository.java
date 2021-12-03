@@ -14,9 +14,9 @@ public interface ContactRepository extends JpaRepository<Contact, Long> {
     Optional<Contact> findById(Long id);
 
     @Modifying(clearAutomatically = true)
-    @Query("UPDATE contact c SET c.is_resolved=:isResolved where c.id = :id")
+    @Query("UPDATE contacts c SET c.is_resolved=:isResolved where c.id = :id")
     void update(@Param("id") Long id, @Param("isResolved") boolean isResolved);
 
-    @Query("DELETE contact c WHERE c.id = :id")
+    @Query("DELETE contacts c WHERE c.id = :id")
     void delete(@Param("id") Long id);
 }

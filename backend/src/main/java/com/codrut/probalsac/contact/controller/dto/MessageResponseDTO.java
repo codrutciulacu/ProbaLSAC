@@ -6,5 +6,5 @@ import lombok.RequiredArgsConstructor;
 @Data
 @RequiredArgsConstructor
 public class MessageResponseDTO {
-    private final String message;
+    public final String message;
 }

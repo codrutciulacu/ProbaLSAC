@@ -15,15 +15,24 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class Contact {
 
-    private final String name;
-    private final String email;
-    private final String message;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private final String name;
+    private final String email;
+    private final String message;
+
     @Column(name = "is_resolved")
     @NonNull
-    private boolean isResolved;
+    private Boolean isResolved;
+
+    public Contact() {
+        name = "";
+        email = "";
+        message = "";
+        isResolved = false;
+    }
 
     @Override
     public boolean equals(Object o) {

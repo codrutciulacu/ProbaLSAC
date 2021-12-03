@@ -4,7 +4,18 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 @Data
-@RequiredArgsConstructor
 public class ContactUpdateDTO {
-    public final boolean isResolved;
+    public Boolean is_resolved;
+
+    public ContactUpdateDTO() {
+        is_resolved = false;
+    }
+
+    public ContactUpdateDTO(Boolean is_resolved) {
+        this.is_resolved = is_resolved;
+    }
+
+    public void setIsResolved(Boolean isResolved) {
+        this.is_resolved = isResolved;
+    }
 }

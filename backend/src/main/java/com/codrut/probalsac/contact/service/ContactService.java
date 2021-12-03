@@ -16,9 +16,9 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ContactService {
 
-    private ContactRepository repository;
-    private ContactMapper mapper;
-    private ContactValidator validator;
+    private final ContactRepository repository;
+    private final ContactMapper mapper;
+    private final ContactValidator validator;
 
     public ContactDTO save(ContactCreationDTO dto) {
         var entity = mapper.mapToEntity(dto);
@@ -43,11 +43,16 @@ public class ContactService {
     }
 
     public void update(Long id, ContactUpdateDTO dto) {
-        repository.update(id, dto.isResolved());
+        var entity = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("The contact with this id does not exist!"));
+
+        entity.setIsResolved(dto.is_resolved);
+
+        repository.save(entity);
     }
 
     public void delete(Long id) {
-        repository.delete(id);
+        repository.deleteById(id);
     }
 
 }

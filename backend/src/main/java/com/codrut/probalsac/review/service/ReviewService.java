@@ -5,6 +5,7 @@ import com.codrut.probalsac.review.controller.dto.ReviewDTO;
 import com.codrut.probalsac.review.controller.dto.UpdateReviewDTO;
 import com.codrut.probalsac.review.mapper.ReviewMapper;
 import com.codrut.probalsac.review.repository.ReviewRepository;
+import com.codrut.probalsac.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,10 +17,13 @@ import java.util.stream.Collectors;
 public class ReviewService {
 
     private final ReviewRepository repository;
+    private final UserRepository userRepository;
     private final ReviewMapper mapper;
 
     public void save(ReviewCreationDTO dto) {
-        var entity = mapper.mapToEntity(dto);
+        var user = userRepository.findById(dto.user_id)
+                .orElseThrow(() -> new RuntimeException("The user couldn't be found!"));
+        var entity = mapper.mapToEntity(dto, user);
 
         repository.save(entity);
     }

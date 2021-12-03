@@ -24,17 +24,17 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserService service;
-    private JwtTokenFilter jwtTokenFilter;
+    private final JwtTokenFilter jwtTokenFilter;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         super.configure(auth);
-        auth.userDetailsService(service);
+        auth.userDetailsService(userDetailsService()).passwordEncoder(passwordEncoder);
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        super.configure(http);
         http = http.cors().disable().csrf().disable();
 
         http = http
@@ -43,22 +43,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and();
 
         http.authorizeRequests()
-                .antMatchers("/api/v1/contact/**").permitAll()
-                .antMatchers("/api/v1/auth/login").permitAll()
-                .antMatchers("/api/v1/auth/register").permitAll()
+                .antMatchers("/api/v1/contact-requests/**").permitAll()
+                .antMatchers("/api/v1/auth/**").permitAll()
                 .anyRequest().authenticated();
+        http.addFilter(new JWTAuthenticationFilter(authenticationManager(), new JwtTokenUtil()));
         http.addFilterBefore(jwtTokenFilter,
                 UsernamePasswordAuthenticationFilter.class);
-    }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
     }
 
     @Override
     @Bean
     public AuthenticationManager authenticationManager() throws Exception {
-        return super.authenticationManagerBean();
+        return super.authenticationManager();
     }
 }

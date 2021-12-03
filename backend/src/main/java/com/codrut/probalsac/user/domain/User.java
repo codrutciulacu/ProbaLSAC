@@ -32,6 +32,9 @@ public class User implements UserDetails {
     @NonNull
     private Role role;
 
+    public User() {
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of((GrantedAuthority) role::name);

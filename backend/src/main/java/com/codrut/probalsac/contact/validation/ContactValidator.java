@@ -13,13 +13,13 @@ public class ContactValidator {
 
     //TODO: Replace RuntimeException with custom exception
     public void validate(Contact contact) {
-        if (verifyShortStingSize(contact.getName()))
+        if (!verifyShortStingSize(contact.getName()))
             throw new RuntimeException("The contact name is too long or too short");
-        if (verifyShortStingSize(contact.getEmail()))
+        if (!verifyShortStingSize(contact.getEmail()))
             throw new RuntimeException("The contact email is too long or too short");
         if (verifyEmailFormat(contact.getEmail()))
             throw new RuntimeException("The contact email is the wrong format");
-        if (verifyLongStingSize(contact.getMessage()))
+        if (!verifyLongStingSize(contact.getMessage()))
             throw new RuntimeException("The contact message is too long or too short");
     }
 

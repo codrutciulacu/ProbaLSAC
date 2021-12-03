@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,8 +20,9 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class UserService implements UserDetailsService {
 
-    private UserRepository repository;
-    private UserMapper mapper;
+    private final UserRepository repository;
+    private final UserMapper mapper;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -29,7 +31,12 @@ public class UserService implements UserDetailsService {
     }
 
     public void save(RegisterUserDTO dto) {
+        var entity = mapper.mapToEntity(dto);
 
+        //TODO: validation
+        entity.setPassword(passwordEncoder.encode(entity.getPassword()));
+
+        repository.save(entity);
     }
 
     public List<UserDTO> findAll() {
@@ -68,7 +75,7 @@ public class UserService implements UserDetailsService {
     }
 
     public void delete(Long id) {
-        repository.delete(id);
+        repository.deleteById(id);
     }
 
 }

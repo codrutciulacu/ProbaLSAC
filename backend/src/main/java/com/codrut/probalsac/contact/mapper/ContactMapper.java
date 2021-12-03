@@ -27,6 +27,6 @@ public class ContactMapper {
                 entity.getName(),
                 entity.getEmail(),
                 entity.getMessage(),
-                entity.isResolved());
+                entity.getIsResolved());
     }
 }

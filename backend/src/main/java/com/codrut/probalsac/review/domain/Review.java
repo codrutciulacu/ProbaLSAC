@@ -1,5 +1,6 @@
 package com.codrut.probalsac.review.domain;
 
+import com.codrut.probalsac.user.domain.User;
 import lombok.*;
 
 import javax.persistence.*;
@@ -22,5 +23,5 @@ public class Review {
     @NonNull
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private Long userId;
+    private User user;
 }

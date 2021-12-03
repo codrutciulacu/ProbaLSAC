@@ -10,5 +10,5 @@ public class ContactDTO {
     public final String name;
     public final String email;
     public final String message;
-    public final boolean is_resolved;
+    public final Boolean is_resolved;
 }

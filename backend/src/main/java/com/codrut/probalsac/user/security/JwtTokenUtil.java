@@ -12,14 +12,11 @@ import java.util.Date;
 @RequiredArgsConstructor
 public class JwtTokenUtil {
     private final String jwtSecret = "zdtlD3JK56m6wTTgsNFhqzjqP";
-    private final String jwtIssuer = "example.io";
-
-    private final Logger logger;
 
     public String generateAccessToken(User user) {
         return Jwts.builder()
                 .setSubject(String.format("%s,%s", user.getId(), user.getUsername()))
-                .setIssuer(jwtIssuer)
+                .setIssuer("codrut.io")
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + 7 * 24 * 60 * 60 * 1000)) // 1 week
                 .signWith(SignatureAlgorithm.HS512, jwtSecret)
@@ -58,14 +55,13 @@ public class JwtTokenUtil {
             Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token);
             return true;
         } catch (MalformedJwtException ex) {
-            logger.error("Invalid JWT token - {}", ex.getMessage());
+           throw new RuntimeException("Invalid JWT token", ex);
         } catch (ExpiredJwtException ex) {
-            logger.error("Expired JWT token - {}", ex.getMessage());
+            throw new RuntimeException("Expired JWT token", ex);
         } catch (UnsupportedJwtException ex) {
-            logger.error("Unsupported JWT token - {}", ex.getMessage());
+            throw new RuntimeException("Unsupported JWT token", ex);
         } catch (IllegalArgumentException ex) {
-            logger.error("JWT claims string is empty - {}", ex.getMessage());
+            throw new RuntimeException("JWT claims string is empty", ex);
         }
-        return false;
     }
 }

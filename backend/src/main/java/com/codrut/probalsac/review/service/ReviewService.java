@@ -5,6 +5,7 @@ import com.codrut.probalsac.review.controller.dto.ReviewDTO;
 import com.codrut.probalsac.review.controller.dto.UpdateReviewDTO;
 import com.codrut.probalsac.review.mapper.ReviewMapper;
 import com.codrut.probalsac.review.repository.ReviewRepository;
+import com.codrut.probalsac.review.validation.ReviewValidation;
 import com.codrut.probalsac.user.domain.User;
 import com.codrut.probalsac.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -22,11 +23,12 @@ public class ReviewService {
     private final ReviewRepository repository;
     private final UserRepository userRepository;
     private final ReviewMapper mapper;
+    private final ReviewValidation validation;
 
     public void save(ReviewCreationDTO dto) {
         var user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         var entity = mapper.mapToEntity(dto, user);
-
+        validation.validate(dto);
         repository.save(entity);
     }
 

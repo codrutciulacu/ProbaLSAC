@@ -1,8 +1,8 @@
-package com.codrut.probalsac.contact.mapper;
+package com.codrut.probalsac.user.contact.mapper;
 
-import com.codrut.probalsac.contact.controller.dto.ContactCreationDTO;
-import com.codrut.probalsac.contact.controller.dto.ContactDTO;
-import com.codrut.probalsac.contact.domain.Contact;
+import com.codrut.probalsac.user.contact.controller.dto.ContactCreationDTO;
+import com.codrut.probalsac.user.contact.controller.dto.ContactDTO;
+import com.codrut.probalsac.user.contact.domain.Contact;
 import org.springframework.stereotype.Component;
 
 @Component

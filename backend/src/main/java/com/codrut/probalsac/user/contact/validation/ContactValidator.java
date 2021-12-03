@@ -1,6 +1,6 @@
-package com.codrut.probalsac.contact.validation;
+package com.codrut.probalsac.user.contact.validation;
 
-import com.codrut.probalsac.contact.domain.Contact;
+import com.codrut.probalsac.user.contact.domain.Contact;
 import org.springframework.stereotype.Component;
 
 import java.util.regex.Pattern;

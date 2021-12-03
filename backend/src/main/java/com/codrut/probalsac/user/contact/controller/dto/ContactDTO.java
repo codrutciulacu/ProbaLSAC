@@ -1,12 +1,14 @@
-package com.codrut.probalsac.contact.controller.dto;
+package com.codrut.probalsac.user.contact.controller.dto;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 @Data
 @RequiredArgsConstructor
-public class ContactCreationDTO {
+public class ContactDTO {
+    public final Long id;
     public final String name;
     public final String email;
     public final String message;
+    public final Boolean is_resolved;
 }

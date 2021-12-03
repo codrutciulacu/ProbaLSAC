@@ -1,7 +1,7 @@
 version: '3.3'
 services:
-  API:
-    image: 'blog-api-docker.jar'
+  api:
+    build: ./backend
     ports:
       - "8080:8080"
     depends_on:
@@ -14,17 +14,17 @@ services:
       - SPRING_DATASOURCE_DRIVER_CLASS_NAME=com.mysql.jdbc.Driver
   db:
     image: mysql:5.7
+    volumes:
+      - my-db:/var/lib/mysql
     restart: always
     environment:
-      MYSQL_DATABASE: 'probalsac'
-      MYSQL_USER: 'user'
-      MYSQL_PASSWORD: 'password'
-      MYSQL_ROOT_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
     ports:
       - '3306:3306'
     expose:
       - '3306'
-    volumes:
-      - my-db:/var/lib/mysql
 volumes:
   my-db:

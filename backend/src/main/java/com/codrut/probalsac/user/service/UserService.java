@@ -76,8 +76,8 @@ public class UserService implements UserDetailsService {
             userToUpdate.setEmail(dto.email);
 
         if (dto.password != null && !dto.password.isEmpty() &&
-                dto.confirm_password != null && !dto.confirm_password.isEmpty() &&
-                dto.confirm_password.equals(dto.password))
+                dto.confirmation_password != null && !dto.confirmation_password.isEmpty() &&
+                dto.confirmation_password.equals(dto.password))
             userToUpdate.setPassword(dto.password);
 
         if (dto.role != null && !dto.role.isEmpty())

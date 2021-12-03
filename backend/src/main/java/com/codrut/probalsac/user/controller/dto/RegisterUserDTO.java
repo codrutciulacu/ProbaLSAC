@@ -8,6 +8,6 @@ public class RegisterUserDTO {
     public final String firstname;
     public final String lastname;
     public final String password;
-    public final String confirm_password;
+    public final String confirmation_password;
     public final String role;
 }

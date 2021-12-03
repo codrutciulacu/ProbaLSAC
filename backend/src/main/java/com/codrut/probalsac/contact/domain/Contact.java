@@ -1,4 +1,4 @@
-package com.codrut.probalsac.user.contact.domain;
+package com.codrut.probalsac.contact.domain;
 
 
 import lombok.*;

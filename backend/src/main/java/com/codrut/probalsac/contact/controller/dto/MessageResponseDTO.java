@@ -1,4 +1,4 @@
-package com.codrut.probalsac.user.contact.controller.dto;
+package com.codrut.probalsac.contact.controller.dto;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;

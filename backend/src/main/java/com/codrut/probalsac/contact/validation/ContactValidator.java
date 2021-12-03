@@ -1,6 +1,6 @@
-package com.codrut.probalsac.user.contact.validation;
+package com.codrut.probalsac.contact.validation;
 
-import com.codrut.probalsac.user.contact.domain.Contact;
+import com.codrut.probalsac.contact.domain.Contact;
 import org.springframework.stereotype.Component;
 
 import java.util.regex.Pattern;
@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 @Component
 public class ContactValidator {
 
-    private final String EMAIL_REGEX = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\\\.[A-Z]{2,6}$";
+    private final String EMAIL_REGEX = "^(.+)@(.+)$";
     private final Pattern VALID_EMAIL_ADDRESS_PATTERN = Pattern.compile(EMAIL_REGEX, Pattern.CASE_INSENSITIVE);
 
     //TODO: Replace RuntimeException with custom exception
@@ -17,7 +17,7 @@ public class ContactValidator {
             throw new RuntimeException("The contact name is too long or too short");
         if (!verifyShortStingSize(contact.getEmail()))
             throw new RuntimeException("The contact email is too long or too short");
-        if (verifyEmailFormat(contact.getEmail()))
+        if (!verifyEmailFormat(contact.getEmail()))
             throw new RuntimeException("The contact email is the wrong format");
         if (!verifyLongStingSize(contact.getMessage()))
             throw new RuntimeException("The contact message is too long or too short");

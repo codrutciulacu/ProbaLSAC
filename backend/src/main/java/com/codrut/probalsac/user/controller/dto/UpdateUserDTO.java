@@ -8,6 +8,6 @@ public class UpdateUserDTO {
     public final String firstname;
     public final String email;
     public final String password;
-    public final String confirm_password;
+    public final String confirmation_password;
     public final String role;
 }

@@ -1,10 +1,10 @@
-package com.codrut.probalsac.user.contact.controller;
+package com.codrut.probalsac.contact.controller;
 
-import com.codrut.probalsac.user.contact.controller.dto.ContactCreationDTO;
-import com.codrut.probalsac.user.contact.controller.dto.ContactDTO;
-import com.codrut.probalsac.user.contact.controller.dto.ContactUpdateDTO;
-import com.codrut.probalsac.user.contact.controller.dto.MessageResponseDTO;
-import com.codrut.probalsac.user.contact.service.ContactService;
+import com.codrut.probalsac.contact.controller.dto.ContactCreationDTO;
+import com.codrut.probalsac.contact.controller.dto.ContactDTO;
+import com.codrut.probalsac.contact.controller.dto.ContactUpdateDTO;
+import com.codrut.probalsac.contact.controller.dto.MessageResponseDTO;
+import com.codrut.probalsac.contact.service.ContactService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

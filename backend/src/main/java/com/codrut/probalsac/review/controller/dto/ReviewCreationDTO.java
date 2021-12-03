@@ -2,7 +2,18 @@ package com.codrut.probalsac.review.controller.dto;
 
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
 public class ReviewCreationDTO {
-    public final String message;
+    public String message;
+
+    public ReviewCreationDTO(String message) {
+        this.message = message;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 }

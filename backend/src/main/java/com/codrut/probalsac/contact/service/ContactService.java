@@ -1,11 +1,11 @@
-package com.codrut.probalsac.user.contact.service;
+package com.codrut.probalsac.contact.service;
 
-import com.codrut.probalsac.user.contact.controller.dto.ContactCreationDTO;
-import com.codrut.probalsac.user.contact.controller.dto.ContactDTO;
-import com.codrut.probalsac.user.contact.controller.dto.ContactUpdateDTO;
-import com.codrut.probalsac.user.contact.mapper.ContactMapper;
-import com.codrut.probalsac.user.contact.repository.ContactRepository;
-import com.codrut.probalsac.user.contact.validation.ContactValidator;
+import com.codrut.probalsac.contact.controller.dto.ContactCreationDTO;
+import com.codrut.probalsac.contact.controller.dto.ContactDTO;
+import com.codrut.probalsac.contact.controller.dto.ContactUpdateDTO;
+import com.codrut.probalsac.contact.mapper.ContactMapper;
+import com.codrut.probalsac.contact.repository.ContactRepository;
+import com.codrut.probalsac.contact.validation.ContactValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

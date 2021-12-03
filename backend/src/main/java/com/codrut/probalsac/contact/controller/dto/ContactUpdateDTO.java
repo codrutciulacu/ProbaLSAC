@@ -6,5 +6,5 @@ import lombok.RequiredArgsConstructor;
 @Data
 @RequiredArgsConstructor
 public class ContactUpdateDTO {
-    private final boolean isResolved;
+    public final boolean isResolved;
 }

@@ -9,16 +9,16 @@ import org.springframework.stereotype.Component;
 public class ContactMapper {
 
     public Contact mapToEntity(ContactDTO dto) {
-        return new Contact(dto.getName(),
-                dto.getEmail(),
-                dto.getMessage(),
-                dto.isResolved());
+        return new Contact(dto.name,
+                dto.email,
+                dto.message,
+                dto.is_resolved);
     }
 
     public Contact mapToEntity(ContactCreationDTO dto) {
-        return new Contact(dto.getName(),
-                dto.getEmail(),
-                dto.getMessage(),
+        return new Contact(dto.name,
+                dto.email,
+                dto.message,
                 false);
     }
 

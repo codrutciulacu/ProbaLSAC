@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 @Data
 @RequiredArgsConstructor
 public class ContactCreationDTO {
-    private final String name;
-    private final String email;
-    private final String message;
+    public final String name;
+    public final String email;
+    public final String message;
 }
